@@ -46,7 +46,7 @@ PAM_EXTERN int pam_sm_acct_mgmt
 
 PAM_EXTERN int pam_sm_authenticate
 (pam_handle_t *pamh, int flags, int argc, const char **argv) {
-    int retval = PAM_ABORT;
+    int retval = PAM_AUTH_ERR;
     const char *password;
     const char *user;
 

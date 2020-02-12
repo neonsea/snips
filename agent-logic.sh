@@ -34,7 +34,8 @@ for key in "$@"; do
     KEYFP=$(ssh-keygen -lf "$key")
 
     # if our key is already added, don't operate on it
-    if echo "$KEYS" | grep -v "$KEYFP" > /dev/null; then
+    echo "$KEYS" | grep "$KEYFP" -q
+    if [[ "$?" -ne "0" ]]; then
         ssh-add -q "$key" > /dev/null
     fi
 done
